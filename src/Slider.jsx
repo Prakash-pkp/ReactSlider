@@ -21,10 +21,35 @@ export default function Slider() {
   }
   return (
     <>
-      <p>SLIDER</p>
-      <img src={images[imageIndex]} alt="slider" /> <br />
-      <button onClick={handlePrev}>Prev</button>{" "}
-      <button onClick={handleNext}>Next</button>
+      <h1 className="p-5 font-bold uppercase bg-orange-800 text-white mb-9">Image Slider Using React</h1>
+      {/* Optimizing the code to prevent the re network
+      calls for fetching the image from urls*/}
+      <div className="flex justify-center">
+        {images.map((url, i) => (
+          <img
+            src={url}
+            alt="slider"
+            key={url}
+            className={imageIndex === i ? "block" : "hidden"}
+          />
+        ))}
+      </div>
+      <br />
+      {/* <img src={images[imageIndex]} alt="slider" /> <br /> */}
+      <div className="flex justify-center gap-5">
+        <button
+          onClick={handlePrev}
+          className="p-2 text-center bg-sky-950 text-white w-40"
+        >
+          Prev
+        </button>
+        <button
+          onClick={handleNext}
+          className="p-2 text-center bg-sky-950 text-white w-40"
+        >
+          Next
+        </button>
+      </div>
     </>
   );
 }
